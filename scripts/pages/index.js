@@ -3,7 +3,9 @@ import {getData} from './utils/data.js'
 
 const init = async () => {
     const data = await getData()
-    displayCardsOnPage(data);
+    data.array.forEach((recipe) => {
+        displayCardsOnPage(recipe);
+    });
 };
 
 init();

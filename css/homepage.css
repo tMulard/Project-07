@@ -1,0 +1,72 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+    background-color: #EDEDED;
+}
+
+header {
+    height: 667px;
+    background-image: url('../assets/photos/homepage_picture.jpg');
+    background-size: cover;
+    position : relative;
+    z-index: 0;
+}
+
+header .title {
+    color : white;
+    position : absolute;
+    top: 20px;
+    left : 20px;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+header .headerSearch {
+    position : absolute;
+    top: 100px;
+    left: 25%;
+    z-index: 1;
+    max-width : 1000px;
+}
+
+header .headerSearch h1 {
+    color : #FFD15B;
+    /* font-family: Anton; */
+    font-weight: 400px;
+    font-size : 44px;
+    line-height : 66.24px;
+    text-align : center;
+    width: 80%;
+}
+
+header .headerSearch input {
+    width: 954px;
+    height: 72px;
+    border-radius: 10px;
+}
+
+.filterSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width : 50%;
+}
+
+.filterContainer {
+    width : 130px;
+    background-color: white;
+    border : solid 1px gray;
+    border-radius: 20px;
+}
+
+.filterResult {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding : 0 10px;
+}

@@ -13,23 +13,21 @@
       src="https://kit.fontawesome.com/a1f8d8f6ea.js"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="index.js"></script>
-    <script type="module" src="card.js"></script>
-    </head>
-    <body>
-        <header>
-            <div class="Title">
-                <span>LES PETITS PLATS</span>
-                <i class="fa-regular fa-circle-o"></i>
-            </div>
-            <div class="headerSearch">
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <span>LES PETITS PLATS</span>
+                <img src="assets/logoCircle.svg">
+              </div>
+              <div class="headerSearch">
                 <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DELICIEUSES</h1>
-                <input type="search">
-            </div>
-        </header>
-        <section class="Recipes">
-            <div class="filterSection" aria-label="Ingrédients" id="filter1">
-              <div class="filterContainer">
+                <input type="search" placeholder="Rechercher une recette, un ingrédient...">
+              </div>
+            </header>
+            <section class="Recipes">
+            <div class="filterSection">
+              <div class="filterContainer" aria-label="Ingrédients" id="filter1">
                 <div class="filterResult">
                   <p>Ingrédients</p>
                   <i class="fas fa-chevron-up face_down" id="filterArrow"></i>
@@ -38,9 +36,7 @@
                   <div class="filter"></div>
                 </div>
               </div>
-            </div>
-            <div class="filterSection" aria-label="Appareils" id="filter2">
-              <div class="filterContainer">
+              <div class="filterContainer" aria-label="Appareils" id="filter2">
                 <div class="filterResult">
                   <p>Appareils</p>
                   <i class="fas fa-chevron-up face_down" id="filterArrow"></i>
@@ -49,9 +45,7 @@
                   <div class="filter"></div>
                 </div>
               </div>
-            </div>
-            <div class="filterSection" aria-label="Ustensiles" id="filter3">
-              <div class="filterContainer">
+              <div class="filterContainer" aria-label="Ustensiles" id="filter3">
                 <div class="filterResult">
                   <p>Ustensiles</p>
                   <i class="fas fa-chevron-up face_down" id="filterArrow"></i>
@@ -62,6 +56,7 @@
               </div>
             </div>
             <div class="cardList"></div>
-        </section>
-    </body>
-</html>
+          </section>
+          <script type="module" src="scripts/pages/index.js"></script>
+        </body>
+        </html>

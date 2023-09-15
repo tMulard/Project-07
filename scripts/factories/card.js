@@ -37,20 +37,20 @@ export const recipeCardFactory = (data) => {
         ingredientTitle.innerText = "INGREDIENTS"
         ingredientList.appendChild(ingredientTitle);
 
-        data.ingredients.array.forEach((ing) => {
-            const ingredient = document.createElement("div");
-            ingredient.classList.add("ingredientObject");
+        // data.ingredients.array.forEach((ing) => {
+        //     const ingredient = document.createElement("div");
+        //     ingredient.classList.add("ingredientObject");
 
-            const ingredientName = document.createElement("p");
-            ingredientName.innerText = data.ingredients[ing].name
+        //     const ingredientName = document.createElement("p");
+        //     ingredientName.innerText = data.ingredients[ing].name
 
-            const ingredientQuantity = document.createElement("p");
-            ingredientQuantity.innerText = data.ingredients[ing].quantity
+        //     const ingredientQuantity = document.createElement("p");
+        //     ingredientQuantity.innerText = data.ingredients[ing].quantity
 
-            ingredient.appendChild(ingredientName);
-            ingredient.appendChild(ingredientQuantity);
-            ingredientList.appendChild(ingredient);
-        });
+        //     ingredient.appendChild(ingredientName);
+        //     ingredient.appendChild(ingredientQuantity);
+        //     ingredientList.appendChild(ingredient);
+        // });
 
         upperSection.appendChild(image);
         upperSection.appendChild(time);
