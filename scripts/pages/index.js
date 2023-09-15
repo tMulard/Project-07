@@ -1,11 +1,11 @@
-import { displayCardsOnPage} from './factories/card.js';
-import {getData} from './utils/data.js'
-
+import { displayCardsOnPage, displayStats} from '../factories/card.js';
+import {getData} from '../utils/data.js'
+import { fillLists } from '../factories/list.js';
 const init = async () => {
     const data = await getData()
-    data.array.forEach((recipe) => {
-        displayCardsOnPage(recipe);
-    });
-};
+    displayCardsOnPage(data);
+    displayStats(data);
+    fillLists(data)
+};       
 
 init();

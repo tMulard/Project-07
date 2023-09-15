@@ -1,71 +1,51 @@
-export const recipeCardFactory = (data) => {
+export const recipeCardFactory = (recipe) => {
+    const picture = `assets/photos/${recipe.image}`;
 
-    const picture = `assets/photos/${data.image}`;
+    const article = document.createElement("article");
+    
+    const upperSection = document.createElement("div");
+    upperSection.classList.add("cardUp");
 
-    function getRecipeCardDOM() {
-        const article = document.createElement("article");
-        
-        const upperSection = document.createElement("div");
-        upperSection.classList.add("cardUp");
+    const image = document.createElement("img");
+    image.setAttribute("src", picture);
+    
+    const time = document.createElement("p");
+    time.classList.add("time");
+    time.innerText = `${recipe.time}mins`
 
-        const image = document.createElement("img");
-        image.setAttribute("src", picture);
-        
-        const time = document.createElement("p");
-        time.classList.add("time");
-        time.innerText = `${data.time}mins`
+    const lowerSection = document.createElement("div");
+    lowerSection.classList.add("cardDown");
 
-        const lowerSection = document.createElement("div");
-        lowerSection.classList.add("cardDown");
+    const title = document.createElement("h2");
+    title.innerText = recipe.name
 
-        const title = document.createElement("h2");
-        title.innerText = data.name
+    const cardRecipe = document.createElement("div");
+    cardRecipe.classList.add("cardRecipe");
 
-        const recipe = document.createElement("div");
-        recipe.classList.add("cardRecipe");
+    const recipeTitle = document.createElement("h3");
+    recipeTitle.innerText = "RECETTE"
 
-        const recipeTitle = document.createElement("h3");
-        recipeTitle.innerText = "RECETTE"
+    const description = document.createElement("p");
+    description.innerText = recipe.description
 
-        const description = document.createElement("p");
-        description.innerText = data.description
+    const ingredientList = document.createElement("div");
+    ingredientList.classList.add("ingredientList");
 
-        const ingredientList = document.createElement("div");
-        ingredientList.classList.add("ingredientList");
+    const ingredientTitle = document.createElement("h3");
+    ingredientTitle.innerText = "INGREDIENTS"
+    ingredientList.appendChild(ingredientTitle);
 
-        const ingredientTitle = document.createElement("h3");
-        ingredientTitle.innerText = "INGREDIENTS"
-        ingredientList.appendChild(ingredientTitle);
+    upperSection.appendChild(image);
+    upperSection.appendChild(time);
+    lowerSection.appendChild(title);
+    cardRecipe.appendChild(recipeTitle);
+    cardRecipe.appendChild(description);
+    lowerSection.appendChild(cardRecipe);
+    lowerSection.appendChild(ingredientList);
+    article.appendChild(upperSection);
+    article.appendChild(lowerSection);
 
-        // data.ingredients.array.forEach((ing) => {
-        //     const ingredient = document.createElement("div");
-        //     ingredient.classList.add("ingredientObject");
-
-        //     const ingredientName = document.createElement("p");
-        //     ingredientName.innerText = data.ingredients[ing].name
-
-        //     const ingredientQuantity = document.createElement("p");
-        //     ingredientQuantity.innerText = data.ingredients[ing].quantity
-
-        //     ingredient.appendChild(ingredientName);
-        //     ingredient.appendChild(ingredientQuantity);
-        //     ingredientList.appendChild(ingredient);
-        // });
-
-        upperSection.appendChild(image);
-        upperSection.appendChild(time);
-        lowerSection.appendChild(title);
-        recipe.appendChild(recipeTitle);
-        recipe.appendChild(description);
-        lowerSection.appendChild(recipe);
-        lowerSection.appendChild(ingredientList);
-        article.appendChild(upperSection);
-        article.appendChild(lowerSection);
-
-        return article;
-    }
-
-    return getRecipeCardDOM;
+    return article;
 }
 
 export const displayCardsOnPage = async (data) => {
@@ -73,15 +53,18 @@ export const displayCardsOnPage = async (data) => {
 
     data.forEach((recipe) => {
         const cardModel = recipeCardFactory(recipe);
-        const cardDOM = cardModel.getRecipeCardDOM();
-        cardList.appendChild(cardDOM);
+        cardList.appendChild(cardModel);
     })
 }
 
-
-/*
-const removeDuplicates = (arr) => {
-    return [...new Set(arr)];
+export const displayStats = (data) => {
+    let totalRecipes = 0;
+  
+    data.forEach((recipe) => {
+      totalRecipes += 1;
+    });
+    const list = document.querySelector(".recipeList")
+    const listNumberDisplayer = document.createElement("p")
+    listNumberDisplayer.innerText = totalRecipes+`recettes`
+    list.appendChild(listNumberDisplayer)
 }
-
-*/
