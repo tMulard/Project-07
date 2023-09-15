@@ -13,6 +13,8 @@
       src="https://kit.fontawesome.com/a1f8d8f6ea.js"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="card.js"></script>
     </head>
     <body>
         <header>
@@ -26,22 +28,40 @@
             </div>
         </header>
         <section class="Recipes">
-            <div class="filterSection" aria-label="Ingrédients">
-                <div class="filterContainer">
-                  <div class="filterResult">
-                    <p>Ingrédients</p>
-                    <i class="fas fa-chevron-up face_down" id="filterArrow"></i>
-                  </div>
-                  <div class="filters hidden">
-                    <div class="filter">Jus de citron</div>
-                    <div class="filter">Glaçons</div>
-                    <div class="filter">Tomate</div>
-                    <div class="filter">Poulet</div>
-                    <div class="filter">Poivron rouge</div>
-                    <div class="filter">Thon en miettes</div>
-                  </div>
+            <div class="filterSection" aria-label="Ingrédients" id="filter1">
+              <div class="filterContainer">
+                <div class="filterResult">
+                  <p>Ingrédients</p>
+                  <i class="fas fa-chevron-up face_down" id="filterArrow"></i>
+                </div>
+                <div class="filters hidden">
+                  <div class="filter"></div>
                 </div>
               </div>
+            </div>
+            <div class="filterSection" aria-label="Appareils" id="filter2">
+              <div class="filterContainer">
+                <div class="filterResult">
+                  <p>Appareils</p>
+                  <i class="fas fa-chevron-up face_down" id="filterArrow"></i>
+                </div>
+                <div class="filters hidden">
+                  <div class="filter"></div>
+                </div>
+              </div>
+            </div>
+            <div class="filterSection" aria-label="Ustensiles" id="filter3">
+              <div class="filterContainer">
+                <div class="filterResult">
+                  <p>Ustensiles</p>
+                  <i class="fas fa-chevron-up face_down" id="filterArrow"></i>
+                </div>
+                <div class="filters hidden">
+                  <div class="filter"></div>
+                </div>
+              </div>
+            </div>
+            <div class="cardList"></div>
         </section>
     </body>
 </html>
