@@ -2,12 +2,14 @@ export const recipeCardFactory = (recipe) => {
     const picture = `assets/photos/${recipe.image}`;
 
     const article = document.createElement("article");
-    
+    article.classList.add("recipe")
+
     const upperSection = document.createElement("div");
     upperSection.classList.add("cardUp");
 
     const image = document.createElement("img");
     image.setAttribute("src", picture);
+    image.classList.add("recipePhoto")
     
     const time = document.createElement("p");
     time.classList.add("time");
@@ -33,14 +35,38 @@ export const recipeCardFactory = (recipe) => {
 
     const ingredientTitle = document.createElement("h3");
     ingredientTitle.innerText = "INGREDIENTS"
-    ingredientList.appendChild(ingredientTitle);
+    
+    const ingredientGrid = document.createElement("div");
+    ingredientGrid.classList.add("ingredientGrid");
 
+    const ingredients = recipe.ingredients.map((el) => {
+        return el.ingredient
+    })
+
+    ingredients.forEach(ingredient => {
+            const ingredientContainer = document.createElement('div');
+            ingredientContainer.classList.add('ingredientContainer')
+            const ingredientName = document.createElement('p');
+            ingredientName.classList.add('ingredientName')
+            ingredientName.innerText = ingredient.name;
+            const ingredientQuantity = document.createElement('p');
+            ingredientQuantity.classList.add('ingredientQuantity')
+            if (ingredient.unit === null) ingredientQuantity.innerText = ingredient.quantity;
+            else ingredientQuantity.innerText = ingredient.quantity + ingredient.unit;
+
+            ingredientContainer.appendChild(ingredientName);
+            ingredientContainer.appendChild(ingredientContainer);
+            ingredientGrid.appendChild(ingredientGrid)
+        });
+    
     upperSection.appendChild(image);
     upperSection.appendChild(time);
     lowerSection.appendChild(title);
     cardRecipe.appendChild(recipeTitle);
     cardRecipe.appendChild(description);
     lowerSection.appendChild(cardRecipe);
+    ingredientList.appendChild(ingredientTitle);
+    ingredientList.appendChild(ingredientGrid);
     lowerSection.appendChild(ingredientList);
     article.appendChild(upperSection);
     article.appendChild(lowerSection);
@@ -68,3 +94,12 @@ export const displayStats = (data) => {
     listNumberDisplayer.innerText = totalRecipes+`recettes`
     list.appendChild(listNumberDisplayer)
 }
+
+
+    // const list = document.querySelector('.ingredientFilterList');
+    // ingredients.forEach(ingredient => {
+    //     const li = document.createElement('li');
+    //     li.classList.add('filter')
+    //     li.innerText = ingredient;
+    //     list.appendChild(li);
+    // });

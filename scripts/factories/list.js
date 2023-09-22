@@ -31,9 +31,21 @@ const ingredientListFactory = (ingredients) => {
 }
 
 const ustensilListFactory = (ustensils) => {
-    
+    const list = document.querySelector('.utensilFilterList');
+    ustensils.forEach(ustensil => {
+        const li = document.createElement('li');
+        li.classList.add('filter')
+        li.innerText = ustensil;
+        list.appendChild(li);
+    });
 }
 
 const applianceListFactory = (appliances) => {
-    
+    const list = document.querySelector('.applianceFilterList');
+    appliances.forEach(appliance => {
+        const li = document.createElement('li');
+        li.classList.add('filter')
+        li.innerText = appliance;
+        list.appendChild(li);
+    });
 }
