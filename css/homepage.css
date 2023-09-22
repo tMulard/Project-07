@@ -56,6 +56,9 @@ header .headerSearch input {
 
 
 ///////////////////////////////////////////////////////////////// */
+.hidden {
+    display: none;
+}
 
 .filterSection {
     display: flex;
@@ -74,6 +77,10 @@ header .headerSearch input {
     z-index : 0;
 }
 
+.filters {
+    display : block;
+}
+
 .filterResult {
     display: flex;
     flex-direction: row;
@@ -84,15 +91,12 @@ header .headerSearch input {
 
 .ingredientFilterList {
     position : absolute;
-    display : none;
 }
 .applianceFilterList {
     position : absolute;
-    display : none;
 }
 .utensilFilterList {
     position : absolute;
-    display : none;
 }
 
 /* //////////////////////////////////////////////////////////////////
@@ -117,7 +121,7 @@ header .headerSearch input {
 .cardList .recipe {
     border-radius : 40px;
     max-width: 380px;
-    height: 500px;
+    /* height: 500px; */
     overflow : hidden;
     background-color: white;
     position : relative;

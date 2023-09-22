@@ -35,29 +35,25 @@ export const recipeCardFactory = (recipe) => {
 
     const ingredientTitle = document.createElement("h3");
     ingredientTitle.innerText = "INGREDIENTS"
-    
+
     const ingredientGrid = document.createElement("div");
     ingredientGrid.classList.add("ingredientGrid");
 
-    const ingredients = recipe.ingredients.map((el) => {
-        return el.ingredient
-    })
+    recipe.ingredients.forEach(ingredient => {
+        const ingredientContainer = document.createElement('div');
+        ingredientContainer.classList.add('ingredientContainer')
+        const ingredientName = document.createElement('p');
+        ingredientName.classList.add('ingredientName')
+        ingredientName.innerText = ingredient.ingredient;
+        const ingredientQuantity = document.createElement('p');
+        ingredientQuantity.classList.add('ingredientQuantity')
+        if (!ingredient.unit) ingredientQuantity.innerText = ingredient.quantity;
+        else ingredientQuantity.innerText = ingredient.quantity + ingredient.unit;
 
-    ingredients.forEach(ingredient => {
-            const ingredientContainer = document.createElement('div');
-            ingredientContainer.classList.add('ingredientContainer')
-            const ingredientName = document.createElement('p');
-            ingredientName.classList.add('ingredientName')
-            ingredientName.innerText = ingredient.name;
-            const ingredientQuantity = document.createElement('p');
-            ingredientQuantity.classList.add('ingredientQuantity')
-            if (ingredient.unit === null) ingredientQuantity.innerText = ingredient.quantity;
-            else ingredientQuantity.innerText = ingredient.quantity + ingredient.unit;
-
-            ingredientContainer.appendChild(ingredientName);
-            ingredientContainer.appendChild(ingredientContainer);
-            ingredientGrid.appendChild(ingredientGrid)
-        });
+        ingredientContainer.appendChild(ingredientName);
+        ingredientContainer.appendChild(ingredientQuantity);
+        ingredientGrid.appendChild(ingredientContainer)
+    });
     
     upperSection.appendChild(image);
     upperSection.appendChild(time);
@@ -94,12 +90,3 @@ export const displayStats = (data) => {
     listNumberDisplayer.innerText = totalRecipes+`recettes`
     list.appendChild(listNumberDisplayer)
 }
-
-
-    // const list = document.querySelector('.ingredientFilterList');
-    // ingredients.forEach(ingredient => {
-    //     const li = document.createElement('li');
-    //     li.classList.add('filter')
-    //     li.innerText = ingredient;
-    //     list.appendChild(li);
-    // });
