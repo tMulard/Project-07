@@ -6,18 +6,28 @@ export const fillLists = (recipes) => {
         const ingredients = recipe.ingredients.map((el) => {
             return el.ingredient
         })
-        return ingredients
+        return removeDuplicates(ingredients)
     }).flat();
 
+    const fullUstensils = recipes.map((recipe) => {
+        const ustensils = recipe.ustensils
+        for (let i = 0; i < ustensils.length; i++) {
+            return ustensils[i];
+        }
+    })
+
+    const fullAppliances = recipes.map((recipe) => {
+        return recipe.appliance;
+    });
+
     const ingredients = removeDuplicates(fullIngredients)
-
-
-    const ustensils = ['']
-    const appliances = ['']
+    const ustensils = removeDuplicates(fullUstensils)
+    const appliances = removeDuplicates(fullAppliances)
 
     ingredientListFactory(ingredients);
     ustensilListFactory(ustensils);
     applianceListFactory(appliances)
+
 }
 
 const ingredientListFactory = (ingredients) => {
@@ -29,6 +39,8 @@ const ingredientListFactory = (ingredients) => {
         list.appendChild(li);
     });
 }
+
+
 
 const ustensilListFactory = (ustensils) => {
     const list = document.querySelector('.utensilFilterList');

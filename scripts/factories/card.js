@@ -49,9 +49,12 @@ export const recipeCardFactory = (recipe) => {
         ingredientQuantity.classList.add('ingredientQuantity')
         if (!ingredient.unit) ingredientQuantity.innerText = ingredient.quantity;
         else ingredientQuantity.innerText = ingredient.quantity + ingredient.unit;
-
+        
         ingredientContainer.appendChild(ingredientName);
-        ingredientContainer.appendChild(ingredientQuantity);
+        
+        if (!ingredient.unit && !ingredient.quantity) ingredientQuantity.innerHTML = "<p></p>";
+        else ingredientContainer.appendChild(ingredientQuantity);
+        
         ingredientGrid.appendChild(ingredientContainer)
     });
     
