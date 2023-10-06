@@ -108,7 +108,9 @@ header .headerSearch input {
 .upsideDown {
     transform : scaleY(-1);
 }
-
+.filters {
+    z-index : 30;
+}
 .ingredientFilterList,
 .applianceFilterList,
 .utensilFilterList {
@@ -118,11 +120,19 @@ header .headerSearch input {
     display : flex;
     flex-direction: column;
     justify-content: space-between;
-    flex-wrap : wrap;
-    /* position: absolute;
-    z-index : 10; */
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
-
+.ingredientFilterList::-webkit-scrollbar,
+.applianceFilterList::-webkit-scrollbar,
+.utensilFilterList::-webkit-scrollbar {
+    display: none;
+}
+.filter {
+    list-style: none;
+    margin-bottom : 10px;
+}
 .filter:hover {
     text-decoration: underline;
     cursor : pointer;
@@ -163,23 +173,15 @@ header .headerSearch input {
     justify-content: space-evenly;
     flex-wrap : wrap;
     align-items : center;
-    position : relative;
-    z-index : 0;
-    background-color : #EDEDED;
 }
 
 
 .cardList .recipe {
     border-radius : 40px;
-    max-width: 380px;
-    height: 650px;
+    width: 380px;
+    height: 731px;
     overflow : hidden;
     background-color: white;
-    position : relative;
-    z-index : 0;
-    display : flex;
-    flex-direction: column;
-    justify-content: space-between;
     margin : 10px 40px;
 }
 
@@ -191,16 +193,10 @@ header .headerSearch input {
     font-size: 12px;
 }
 
-.recipe .cardUp {
-    position : relative;
-    z-index : 0;
-    overflow : hidden;
-    height : 20%;
-}
-
 .recipePhoto {
     width : 100%;
-    height : 175px;
+    height: 300px;
+    object-fit: cover;
 }
 
 .time {
@@ -214,8 +210,6 @@ header .headerSearch input {
 }
 
 .recipe .cardDown {
-    position : relative;
-    z-index : 0;
     height : 80%;
     padding : 5px;
 }
@@ -231,6 +225,8 @@ header .headerSearch input {
 
 .cardRecipe p {
     width : 95%;
+    height: 50px;
+    overflow-y: auto;
     margin : 0 auto;
 }
 

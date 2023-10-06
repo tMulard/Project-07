@@ -1,5 +1,5 @@
 import { displayCardsOnPage, displayStats} from '../factories/card.js';
-import {getData} from '../utils/data.js'
+import {getData, setDataInLocalStorage} from '../utils/data.js'
 import { fillLists } from '../factories/list.js';
 
 const handleFilter = (data) => {
@@ -36,15 +36,17 @@ const handleFilter = (data) => {
           filters.classList.toggle("hidden");
           icon1.classList.toggle(".upsideDown");
           // LOGIQUE D'AFFICHAGE (filtre sélectionné)
-          // const clickedFilter = e.target.textContent;
-          // console.log(clickedFilter)
-          // let cardList = document.querySelectorAll(".recipe")
-          // cardList.forEach((recipe) => {
-          //   if (!recipe.ingredientList.search(`${clickedFilter}`)) cardList.removeChild(recipe)
-          // });
+          const clickedFilter = e.target.textContent;
+          console.log(clickedFilter)
+          let cardList = document.querySelectorAll(".recipe")
+          cardList.forEach((recipe) => {
+            if (!recipe.ingredientList.search(`${clickedFilter}`)) cardList.removeChild(recipe)
+          });
 
           filterClose.addEventListener("click", (e) => {
             filterArea.removeChild(filterElement)
+            // refaire un filtrage + reafficher les recettes
+            
           });
       });
     })
@@ -128,10 +130,31 @@ topButton.addEventListener("click", (e) => {
 
 const init = async () => {
     const data = await getData()
-    displayCardsOnPage(data);
-    displayStats(data);
-    fillLists(data)
-    handleFilter(data)
+    const DATA = data.map((recipe) => ({...recipe, display: true}))
+
+    setDataInLocalStorage(DATA)
+
+    displayCardsOnPage();
+
+    displayStats(DATA);
+    fillLists(DATA)
+    handleFilter(DATA)
 };       
 
 init();
+
+
+// etape pour filtrer
+// 1 - récupérer les recettes dans le localStorage ==> DONE
+
+// 2 - filtrer UNIQUEMENT dans les recettes display = true
+// (INGREDIENTS)
+// 2.1 - remove de la liste l'ingredient
+// 2.2 - afficher le tags
+// 2.3 - filtrer les recettes (if champignon in recette.ingredients ALORS recette.display = true SINON recette.display = false)
+
+// SIDES EFFECT DE BATARD
+// (AFFICHAGE DES FILTRES UNIQUEMENTS CLICABLES)
+
+// 3 - sauvegarder dans le localStorage ==> DONE
+// 4 - displayCardsOnPage(); ==> DONE

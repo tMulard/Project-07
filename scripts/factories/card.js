@@ -1,3 +1,5 @@
+import { getDataFromLocalStorage } from "../utils/data.js";
+
 export const recipeCardFactory = (recipe) => {
     const picture = `assets/photos/${recipe.image}`;
 
@@ -73,12 +75,17 @@ export const recipeCardFactory = (recipe) => {
     return article;
 }
 
-export const displayCardsOnPage = async (data) => {
+
+export const displayCardsOnPage = async () => {
+    const data = getDataFromLocalStorage()
     const cardList = document.querySelector(".cardList");
+    cardList.innerHTML = ''
 
     data.forEach((recipe) => {
-        const cardModel = recipeCardFactory(recipe);
-        cardList.appendChild(cardModel);
+        if (recipe.display === true) {
+            const cardModel = recipeCardFactory(recipe);
+            cardList.appendChild(cardModel);
+        }
     })
 }
 

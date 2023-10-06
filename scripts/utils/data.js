@@ -7,3 +7,11 @@ export const getData = async () => {
       console.log(error);
     }
   };
+
+export const getDataFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('data'))
+}
+
+export const setDataInLocalStorage = (data) => {
+  localStorage.setItem('data', JSON.stringify(data))
+}

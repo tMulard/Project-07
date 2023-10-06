@@ -32,6 +32,13 @@ export const fillLists = (recipes) => {
 
 const ingredientListFactory = (ingredients) => {
     const list = document.querySelector('.ingredientFilterList');
+    
+    const input = document.createElement('input')
+    input.classList.add(['inputSearchList', 'inputSearchIngredient'])
+    input.setAttribute("type", "text");
+
+    list.appendChild(input)
+    
     ingredients.forEach(ingredient => {
         const li = document.createElement('li');
         li.classList.add('filter')
@@ -44,6 +51,13 @@ const ingredientListFactory = (ingredients) => {
 
 const ustensilListFactory = (ustensils) => {
     const list = document.querySelector('.utensilFilterList');
+
+    const input = document.createElement('input')
+    input.classList.add(['inputSearchList', 'inputSearchUstensil'])
+    input.setAttribute("type", "text")
+
+    list.appendChild(input)
+    
     ustensils.forEach(ustensil => {
         const li = document.createElement('li');
         li.classList.add('filter')
@@ -54,6 +68,13 @@ const ustensilListFactory = (ustensils) => {
 
 const applianceListFactory = (appliances) => {
     const list = document.querySelector('.applianceFilterList');
+
+    const input = document.createElement('input')
+    input.classList.add(['inputSearchList', 'inputSearchAppliance'])
+    input.setAttribute("type", "text")
+    
+    list.appendChild(input)
+    
     appliances.forEach(appliance => {
         const li = document.createElement('li');
         li.classList.add('filter')
