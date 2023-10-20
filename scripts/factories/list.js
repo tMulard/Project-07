@@ -34,11 +34,11 @@ const ingredientListFactory = (ingredients) => {
     const list = document.querySelector('.ingredientFilterList');
     
     const input = document.createElement('input')
-    input.classList.add(['inputSearchList', 'inputSearchIngredient'])
+    input.classList.add(['inputSearchList'], ['inputSearchIngredient'])
     input.setAttribute("type", "text");
 
     list.appendChild(input)
-    
+
     ingredients.forEach(ingredient => {
         const li = document.createElement('li');
         li.classList.add('filter')
@@ -53,7 +53,7 @@ const ustensilListFactory = (ustensils) => {
     const list = document.querySelector('.utensilFilterList');
 
     const input = document.createElement('input')
-    input.classList.add(['inputSearchList', 'inputSearchUstensil'])
+    input.classList.add(['inputSearchList'], ['inputSearchUstensil'])
     input.setAttribute("type", "text")
 
     list.appendChild(input)
@@ -70,7 +70,7 @@ const applianceListFactory = (appliances) => {
     const list = document.querySelector('.applianceFilterList');
 
     const input = document.createElement('input')
-    input.classList.add(['inputSearchList', 'inputSearchAppliance'])
+    input.classList.add(['inputSearchList'], ['inputSearchAppliance'])
     input.setAttribute("type", "text")
     
     list.appendChild(input)

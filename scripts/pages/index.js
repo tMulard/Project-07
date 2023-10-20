@@ -1,144 +1,169 @@
 import { displayCardsOnPage, displayStats} from '../factories/card.js';
-import {getData, setDataInLocalStorage} from '../utils/data.js'
+import {getData, getDataFromLocalStorage, setDataInLocalStorage} from '../utils/data.js'
 import { fillLists } from '../factories/list.js';
 
 const handleFilter = (data) => {
-    const filter1 = document.querySelector("#filter1");
-    const filter2 = document.querySelector("#filter2");
-    const filter3 = document.querySelector("#filter3");
-    const icon1 = document.querySelector("#filterArrow1");
-    const icon2 = document.querySelector("#filterArrow2");
-    const icon3 = document.querySelector("#filterArrow3");
-    const filterArea = document.querySelector(".filterSelectedArea")
-
-    filter1.addEventListener("click", () => {
+  const filter1 = document.querySelector("#filter1");
+  const filter2 = document.querySelector("#filter2");
+  const filter3 = document.querySelector("#filter3");
+  const icon1 = document.querySelector("#filterArrow1");
+  const icon2 = document.querySelector("#filterArrow2");
+  const icon3 = document.querySelector("#filterArrow3");
+  const filterArea = document.querySelector(".filterSelectedArea")
+  
+  filter1.addEventListener("click", () => {
+      const data = getDataFromLocalStorage();
       const filters = filter1.querySelector('.ingredientFilterList')
       const filterList = filter1.querySelectorAll('li')
       filterList.forEach((filterElt) => {
+        if (filterElt.innerHTML !== "input") {
+          filterElt.addEventListener("click", (e) => {
+            console.log(filterElt)
+          // UI
+            icon1.classList.toggle("upsideDown");
+          filters.classList.toggle("hidden");
+            // récupération de la valeure + création d'objet filtre avec texte
+            const value = e.target.textContent;
+            const filterElement = document.createElement("div")
+            filterElement.classList.add("filterElement")
+            const filterText = document.createElement("p")
+            filterText.innerText = value;
+            const filterClose = document.createElement("img")
+            filterClose.classList.add("filterClose")
+            filterClose.setAttribute("src", "../assets/close-svgrepo-com.svg")
+            
+            filterElement.appendChild(filterText);
+            filterElement.appendChild(filterClose);
+            filterArea.appendChild(filterElement);
+            
+            filters.classList.toggle("hidden");
+            icon1.classList.toggle("upsideDown");
+            // LOGIQUE D'AFFICHAGE (filtre sélectionné)
+            const clickedFilter = e.target.textContent;
+            console.log(clickedFilter)
+            let cardList = document.querySelectorAll(".recipe")
+            cardList.forEach((card) => {
+              const cardIngredientList = card.querySelectorAll(".ingredient")
+              let boolPresent = 0
+              cardIngredientList.forEach((ing) => {
+                console.log(cardIngredientList)
+                if (ing.search(`${clickedFilter}`)) boolPresent = 1                 
+              })
+              if (boolPresent === 0) recipe.display = false
+            });
+            displayCardsOnPage()
+          
+          filterClose.addEventListener("click", (e) => {
+            console.log(e.parentElement.filterElement)
+            filterArea.removeChild(e.filterElement)
+            // refaire un filtrage + reafficher les recettes
+          });
+        });
+        }
+        else {
+          const searchIngredient = document.querySelector(
+            ".inputSearchIngredient"
+          );
+          searchIngredient.addEventListener("change", (value) => {
+            const regex = `/(?:${value})/gm`;
+            data.forEach((recipe) => {
+              recipe.ingredients.forEach((element) => {
+                if (element.ingredient.match(regex)) {
+                  elementRemoving(filters, element.ingredient);
+                }
+              });
+            });
+            displayCardsOnPage();
+          });
+        }
+    })
+    filters.classList.toggle("hidden");
+    icon1.classList.toggle("upsideDown");
+  });
+    filter2.addEventListener("click", () => {
+      const filters = filter2.querySelector('.applianceFilterList')
+      const filterList = filter2.querySelectorAll('li')
+      filterList.forEach((filterElt) => {
         filterElt.addEventListener("click", (e) => {
           // UI
-          icon1.classList.toggle(".upsideDown");
+          icon2.classList.toggle("upsideDown");
           filters.classList.toggle("hidden");
           
           // récupération de la valeure + création d'objet filtre avec texte
           const value = e.target.textContent;
           const filterElement = document.createElement("div")
-          filterElement.classList.add(".filterElement")
+          filterElement.classList.add("filterElement")
           const filterText = document.createElement("p")
           filterText.innerText = value;
           const filterClose = document.createElement("img")
+          filterClose.classList.add("filterClose")
           filterClose.setAttribute("src", "../assets/close-svgrepo-com.svg")
-
+          
           filterElement.appendChild(filterText);
           filterElement.appendChild(filterClose);
           filterArea.appendChild(filterElement);
           
           filters.classList.toggle("hidden");
-          icon1.classList.toggle(".upsideDown");
+          icon2.classList.toggle("upsideDown");
           // LOGIQUE D'AFFICHAGE (filtre sélectionné)
-          const clickedFilter = e.target.textContent;
-          console.log(clickedFilter)
-          let cardList = document.querySelectorAll(".recipe")
-          cardList.forEach((recipe) => {
-            if (!recipe.ingredientList.search(`${clickedFilter}`)) cardList.removeChild(recipe)
+          
           });
-
-          filterClose.addEventListener("click", (e) => {
-            filterArea.removeChild(filterElement)
-            // refaire un filtrage + reafficher les recettes
-            
-          });
-      });
-    })
-    filters.classList.toggle("hidden");
-    icon1.classList.toggle(".upsideDown");
-  });
-    filter2.addEventListener("click", () => {
-        const filters = filter2.querySelector('.applianceFilterList')
-        const filterList = filter2.querySelectorAll('li')
-      filterList.forEach((filterElt) => {
-        filterElt.addEventListener("click", (e) => {
-          // UI
-          icon2.classList.toggle(".upsideDown");
-          filters.classList.toggle("hidden");
-          
-          // récupération de la valeure + création d'objet filtre avec texte
-          const value = e.target.textContent;
-          const filterElement = document.createElement("div")
-          const filterText = document.createElement("p")
-          filterText.innerText = value;
-          filterText.classList.add(".filterElement")
-          
-          filterElement.appendChild(filterText);
-          filterArea.appendChild(filterElement);
-          
-          filters.classList.toggle("hidden");
-          icon2.classList.toggle(".upsideDown");
-          // LOGIQUE D'AFFICHAGE (filtre sélectionné)
-          // const clickedFilter = e.target.textContent;
-          // console.log(clickedFilter)
-          // let cardList = document.querySelectorAll(".recipe")
-          // cardList.forEach((recipe) => {
-          //   if (!recipe.ingredientList.search(`${clickedFilter}`)) cardList.removeChild(recipe)
-          // });
-      });
-    })
+        })
         filters.classList.toggle("hidden");
-        icon2.classList.toggle("face_down");
+        icon2.classList.toggle("upsideDown");
       });
       filter3.addEventListener("click", () => {
         const filters = filter3.querySelector('.utensilFilterList')
         const filterList = filter3.querySelectorAll('li')
-      filterList.forEach((filterElt) => {
-        filterElt.addEventListener("click", (e) => {
-          // UI
-          icon3.classList.toggle(".upsideDown");
+        filterList.forEach((filterElt) => {
+          filterElt.addEventListener("click", (e) => {
+            // UI
+            icon3.classList.toggle("upsideDown");
+            filters.classList.toggle("hidden");
+            
+            // récupération de la valeure + création d'objet filtre avec texte
+            const value = e.target.textContent;
+            const filterElement = document.createElement("div")
+            filterElement.classList.add("filterElement")
+            const filterText = document.createElement("p")
+            filterText.innerText = value;
+            const filterClose = document.createElement("img")
+            filterClose.classList.add("filterClose")
+            filterClose.setAttribute("src", "../assets/close-svgrepo-com.svg")
+            
+            filterElement.appendChild(filterText);
+            filterElement.appendChild(filterClose);
+            filterArea.appendChild(filterElement);
+            
+            filters.classList.toggle("hidden");
+            icon3.classList.toggle("upsideDown");
+            // LOGIQUE D'AFFICHAGE (filtre sélectionné)
+            
+            });
+          })
           filters.classList.toggle("hidden");
-          
-          // récupération de la valeure + création d'objet filtre avec texte
-          const value = e.target.textContent;
-          const filterElement = document.createElement("div")
-          const filterText = document.createElement("p")
-          filterText.innerText = value;
-          filterText.classList.add(".filterElement")
-          
-          filterElement.appendChild(filterText);
-          filterArea.appendChild(filterElement);
-          
-          filters.classList.toggle("hidden");
-          icon3.classList.toggle(".upsideDown");
-          // LOGIQUE D'AFFICHAGE (filtre sélectionné)
-          // const clickedFilter = e.target.textContent;
-          // console.log(clickedFilter)
-          // let cardList = document.querySelectorAll(".recipe")
-          // cardList.forEach((recipe) => {
-          //   if (!recipe.ingredientList.search(`${clickedFilter}`)) cardList.removeChild(recipe)
-          // });
-      });
-    })
-        filters.classList.toggle("hidden");
-        icon3.classList.toggle("face_down");
-      });
-  
-    
-  };
-
+          icon3.classList.toggle("upsideDown");
+        });
+        
+        
+      };
+      
 const topButton = document.querySelector(".topButton")
-topButton.addEventListener("click", (e) => {
+  topButton.addEventListener("click", () => {
   window.scrollTo(0, 0);
 });
 
 const init = async () => {
-    const data = await getData()
-    const DATA = data.map((recipe) => ({...recipe, display: true}))
-
-    setDataInLocalStorage(DATA)
-
-    displayCardsOnPage();
-
-    displayStats(DATA);
-    fillLists(DATA)
-    handleFilter(DATA)
+  const data = await getData()
+  const DATA = data.map((recipe) => ({...recipe, display: true}))
+  
+  setDataInLocalStorage(DATA)
+  
+  displayCardsOnPage();
+  
+  displayStats(DATA);
+  fillLists(DATA)
+  handleFilter(DATA)
 };       
 
 init();
@@ -158,3 +183,20 @@ init();
 
 // 3 - sauvegarder dans le localStorage ==> DONE
 // 4 - displayCardsOnPage(); ==> DONE
+
+// const searchBar = document.querySelector(".searchBar");
+// searchBar.addEventListener("input", () => {
+  //   const data = getDataFromLocalStorage();
+  //   data.forEach((recipe) => {
+    //     if (recipe.display === true) {
+      //     }
+      //   });
+      // });
+      
+      const elementRemoving = (list, ing) => {
+        list.forEach((li) => {
+          if (li.innerText = ing) {
+            list.removeChild(li)
+          }
+        })
+      }
