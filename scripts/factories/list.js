@@ -1,12 +1,15 @@
+import { getDataFromLocalStorage } from "../utils/data.js";
 import { removeDuplicates } from "../utils/tools.js"
 
-export const fillLists = (recipes) => {
-    
+export const fillLists = () => {
+    const recipes = getDataFromLocalStorage()
     const fullIngredients = recipes.map((recipe) => {
-        const ingredients = recipe.ingredients.map((el) => {
-            return el.ingredient
-        })
-        return removeDuplicates(ingredients)
+        if (recipe.display === true) {
+            const ingredients = recipe.ingredients.map((el) => {
+                return el.ingredient
+            })
+            return removeDuplicates(ingredients)
+        }
     }).flat();
 
     const fullUstensils = recipes.map((recipe) => {
@@ -42,6 +45,7 @@ const ingredientListFactory = (ingredients) => {
     ingredients.forEach(ingredient => {
         const li = document.createElement('li');
         li.classList.add('filter')
+        li.classList.add('ingredientFilter')
         li.innerText = ingredient;
         list.appendChild(li);
     });

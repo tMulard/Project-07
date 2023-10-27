@@ -61,12 +61,6 @@ header .headerSearch h1 {
     margin : 0 auto;
 }
 
-.hidden {
-    z-index : 1;
-    position : absolute;
-    top : -5000000%;
-}
-
 .filterArea {
     display: flex;
     flex-direction: row;
@@ -297,3 +291,6 @@ header .headerSearch h1 {
 }
 
 
+.hidden {
+    display : none;
+}

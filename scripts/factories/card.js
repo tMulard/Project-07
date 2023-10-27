@@ -87,16 +87,18 @@ export const displayCardsOnPage = async () => {
             cardList.appendChild(cardModel);
         }
     })
+
+    displayStats(data)
 }
 
 export const displayStats = (data) => {
     let totalRecipes = 0;
   
     data.forEach((recipe) => {
-      totalRecipes += 1;
+        if (recipe.display === true) {
+            totalRecipes += 1;
+        }
     });
     const list = document.querySelector(".recipeList")
-    const listNumberDisplayer = document.createElement("p")
-    listNumberDisplayer.innerText = totalRecipes+`recettes`
-    list.appendChild(listNumberDisplayer)
+    list.innerHTML = totalRecipes+` recettes`
 }
