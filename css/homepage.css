@@ -209,7 +209,9 @@ header .headerSearch h1 {
     height: 300px;
     object-fit: cover;
 }
-
+.recipe .cardUp {
+    position : relative;
+}
 .time {
     position : absolute;
     z-index : 5;

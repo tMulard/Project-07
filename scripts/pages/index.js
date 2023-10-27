@@ -49,13 +49,16 @@ const handleFilter = (data) => {
                 console.log(cardIngredientList)
                 if (ing.search(`${clickedFilter}`)) boolPresent = 1                 
               })
-              if (boolPresent === 0) recipe.display = false
+              if (boolPresent === 0) {
+                card.display = false
+                elementRemoving(filters, clickedFilter)
+              }
             });
             displayCardsOnPage()
           
           filterClose.addEventListener("click", (e) => {
-            console.log(e.parentElement.filterElement)
-            filterArea.removeChild(e.filterElement)
+            console.log(e.target)
+            filterArea.removeChild(e.target.parentElement)
             // refaire un filtrage + reafficher les recettes
           });
         });
@@ -194,9 +197,9 @@ init();
       // });
       
       const elementRemoving = (list, ing) => {
-        list.forEach((li) => {
-          if (li.innerText = ing) {
-            list.removeChild(li)
+        for (let li = 0; li < list.length; li++) {
+          if (list[li].innerText = ing.innerText) {
+            list.removeChild(list[li])
           }
-        })
+        }
       }
