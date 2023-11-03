@@ -1,6 +1,5 @@
 import { displayCardsOnPage} from '../factories/card.js';
 import {getData, setDataInLocalStorage} from '../utils/data.js'
-import { fillLists } from '../factories/list.js';
 import { handleIngredients } from '../utils/handleIngredients.js';
 import { handleAppliances } from '../utils/handleAppliances.js';
 import { handleUtensils } from '../utils/handleUtensils.js';
@@ -21,8 +20,6 @@ const init = async () => {
   handleIngredients()
   handleAppliances()
   handleUtensils()
-
-  fillLists(DATA)
 };       
 
 init();

@@ -11,18 +11,18 @@ export const handleUtensils = () => {
     const onClickLi = (event) => {
         const value = event.target.innerHTML
         const data = getDataFromLocalStorage();
-        createTag(value)
+        createTag(value, "ustensilTag")
         chevron.classList.toggle("upsideDown");
         dropdown.classList.toggle("hidden");
         // filtrer les recettes -> display === false pour value !== utensil
          const filteredData = data.map((recipe) => {
             if (recipe.display === true) {
                 const ustensils = recipe.ustensils
-                for (let i = 0; i < ustensils.length; i++) {
-                    if (!ustensils[i].toLowerCase() === value.toLowerCase()) {
-                        recipe.display = false;
-                    }
+                
+                if (!ustensils.some(ustensil => ustensil.toLowerCase() === value.toLowerCase())) {
+                    recipe.display = false;
                 }
+                
             }
             return recipe;
          })

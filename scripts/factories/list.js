@@ -3,50 +3,52 @@ import { removeDuplicates } from "../utils/tools.js"
 
 export const fillLists = () => {
     const recipes = getDataFromLocalStorage()
+
     const fullIngredients = recipes.map((recipe) => {
         if (recipe.display === true) {
             const ingredients = recipe.ingredients.map((el) => {
                 return el.ingredient
             })
-            return removeDuplicates(ingredients)
+            return ingredients
         }
+        return []
     }).flat();
 
     const fullUstensils = recipes.map((recipe) => {
         if (recipe.display === true) {
-            const ustensils = recipe.ustensils
-            for (let i = 0; i < ustensils.length; i++) {
-                return ustensils[i];
-            }
+            return recipe.ustensils
         }
-    })
+        return []
+    }).flat()
 
     const fullAppliances = recipes.map((recipe) => {
         if (recipe.display === true) {
             return recipe.appliance;
         }
-    });
+        return []
+    }).flat()
 
-    const ingredients = removeDuplicates(fullIngredients)
-    const ustensils = removeDuplicates(fullUstensils)
-    const appliances = removeDuplicates(fullAppliances)
-
-    ingredientListFactory(ingredients);
-    ustensilListFactory(ustensils);
-    applianceListFactory(appliances)
-
+    ingredientListFactory(removeDuplicates(fullIngredients));
+    ustensilListFactory(removeDuplicates(fullUstensils));
+    applianceListFactory(removeDuplicates(fullAppliances))
 }
 
 const ingredientListFactory = (ingredients) => {
+    // 1 - récupérer les ingrédients sélectionnées
+    const selectedIngredients = Array.from(document.querySelectorAll(".ingredientTag"))
+    const ingredientToRemove = selectedIngredients.map((tag) => tag.innerText)
+    // 2 - les retirer de "ingredients"
+    const filteredIngredients = ingredients.filter(ingr => !ingredientToRemove.includes(ingr)).flat()
+
     const list = document.querySelector('.ingredientFilterList');
+    list.innerHTML = '';
     
     const input = document.createElement('input')
     input.classList.add(['inputSearchList'], ['inputSearchIngredient'])
     input.setAttribute("type", "text");
-
     list.appendChild(input)
 
-    ingredients.forEach(ingredient => {
+    filteredIngredients.forEach(ingredient => {
         const li = document.createElement('li');
         li.classList.add('filter')
         li.classList.add('ingredientFilter')
@@ -58,7 +60,14 @@ const ingredientListFactory = (ingredients) => {
 
 
 const ustensilListFactory = (ustensils) => {
+    // 1 - récupérer les ustensils sélectionnées
+    const selectedUstensils = Array.from(document.querySelectorAll(".ustensilTag"))
+    const ustensilToRemove = selectedUstensils.map((tag) => tag.innerText)
+    // 2 - les retirer de "ustensils"
+    const filteredUstensils = ustensils.filter(ust => !ustensilToRemove.includes(ust)).flat()
+
     const list = document.querySelector('.utensilFilterList');
+    list.innerHTML = '';
 
     const input = document.createElement('input')
     input.classList.add(['inputSearchList'], ['inputSearchUstensil'])
@@ -66,7 +75,7 @@ const ustensilListFactory = (ustensils) => {
 
     list.appendChild(input)
     
-    ustensils.forEach(ustensil => {
+    filteredUstensils.forEach(ustensil => {
         const li = document.createElement('li');
         li.classList.add('utensilFilter')
         li.innerText = ustensil;
@@ -75,7 +84,14 @@ const ustensilListFactory = (ustensils) => {
 }
 
 const applianceListFactory = (appliances) => {
+    // 1 - récupérer les appliances sélectionnées
+    const selectedAppliances = Array.from(document.querySelectorAll(".applianceTag"))
+    const applianceToRemove = selectedAppliances.map((tag) => tag.innerText)
+    // 2 - les retirer de "appliances"
+    const filteredAppliances = appliances.filter(appl => !applianceToRemove.includes(appl)).flat()
+    
     const list = document.querySelector('.applianceFilterList');
+    list.innerHTML = '';
 
     const input = document.createElement('input')
     input.classList.add(['inputSearchList'], ['inputSearchAppliance'])
@@ -83,7 +99,7 @@ const applianceListFactory = (appliances) => {
     
     list.appendChild(input)
     
-    appliances.forEach(appliance => {
+    filteredAppliances.forEach(appliance => {
         const li = document.createElement('li');
         li.classList.add('applianceFilter')
         li.innerText = appliance;

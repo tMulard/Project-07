@@ -1,4 +1,5 @@
 import { getDataFromLocalStorage } from "../utils/data.js";
+import { fillLists } from "./list.js";
 
 export const recipeCardFactory = (recipe) => {
     const picture = `assets/photos/${recipe.image}`;
@@ -89,6 +90,7 @@ export const displayCardsOnPage = async () => {
     })
 
     displayStats(data)
+    fillLists()
 }
 
 export const displayStats = (data) => {

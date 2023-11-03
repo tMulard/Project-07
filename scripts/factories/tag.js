@@ -1,7 +1,8 @@
-export const createTag = (value) => {
+export const createTag = (value, type) => {
   const filterArea = document.querySelector(".filterSelectedArea");
   const filterElement = document.createElement("div");
   filterElement.classList.add("filterElement");
+  filterElement.classList.add(type);
   const filterText = document.createElement("p");
   filterText.innerText = value;
   const filterClose = document.createElement("img");
@@ -17,3 +18,5 @@ export const createTag = (value) => {
   });
 };
 
+///inputs
+///effacer tag puis dom

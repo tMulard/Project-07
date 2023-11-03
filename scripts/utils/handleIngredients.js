@@ -11,7 +11,7 @@ export const handleIngredients = () => {
     const onClickLi = (event) => {
         const value = event.target.innerHTML
         const data = getDataFromLocalStorage();
-        createTag(value)
+        createTag(value, 'ingredientTag')
         chevron.classList.toggle("upsideDown");
         dropdown.classList.toggle("hidden");
         // filtrer les recettes -> display === false pour value !== ingredients

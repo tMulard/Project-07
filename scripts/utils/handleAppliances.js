@@ -11,18 +11,21 @@ export const handleAppliances = () => {
     const onClickLi = (event) => {
         const value = event.target.innerHTML
         const data = getDataFromLocalStorage();
-        createTag(value)
+        createTag(value, "applianceTag")
         chevron.classList.toggle("upsideDown");
         dropdown.classList.toggle("hidden");
         // filtrer les recettes -> display === false pour value !== appliance
-         const filteredData = data.map((recipe) => {
+        const filteredData = data.map((recipe) => {
             if (recipe.display === true) {
-                    if (!recipe.appliance.toLowerCase() === value.toLowerCase()) {
-                        recipe.display = false;
-                    }
+                if (recipe.appliance.toLowerCase() !== value.toLowerCase()) {
+                    recipe.display = false;
+                }
             }
             return recipe;
          })
+
+         console.log(filteredData)
+
          setDataInLocalStorage(filteredData);
          displayCardsOnPage();
     }
