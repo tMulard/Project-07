@@ -11,4 +11,9 @@ export const createTag = (value) => {
   filterElement.appendChild(filterText);
   filterElement.appendChild(filterClose);
   filterArea.appendChild(filterElement);
+
+  filterClose.addEventListener("click", (e) => {
+    filterArea.removeChild(filterElement)
+  });
 };
+

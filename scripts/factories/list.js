@@ -13,14 +13,18 @@ export const fillLists = () => {
     }).flat();
 
     const fullUstensils = recipes.map((recipe) => {
-        const ustensils = recipe.ustensils
-        for (let i = 0; i < ustensils.length; i++) {
-            return ustensils[i];
+        if (recipe.display === true) {
+            const ustensils = recipe.ustensils
+            for (let i = 0; i < ustensils.length; i++) {
+                return ustensils[i];
+            }
         }
     })
 
     const fullAppliances = recipes.map((recipe) => {
-        return recipe.appliance;
+        if (recipe.display === true) {
+            return recipe.appliance;
+        }
     });
 
     const ingredients = removeDuplicates(fullIngredients)
@@ -64,7 +68,7 @@ const ustensilListFactory = (ustensils) => {
     
     ustensils.forEach(ustensil => {
         const li = document.createElement('li');
-        li.classList.add('filter')
+        li.classList.add('utensilFilter')
         li.innerText = ustensil;
         list.appendChild(li);
     });
@@ -81,7 +85,7 @@ const applianceListFactory = (appliances) => {
     
     appliances.forEach(appliance => {
         const li = document.createElement('li');
-        li.classList.add('filter')
+        li.classList.add('applianceFilter')
         li.innerText = appliance;
         list.appendChild(li);
     });

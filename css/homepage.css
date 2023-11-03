@@ -123,11 +123,15 @@ header .headerSearch h1 {
 .utensilFilterList::-webkit-scrollbar {
     display: none;
 }
-.filter {
+.ingredientFilterList li,
+.applianceFilterList li,
+.utensilFilterList li {
     list-style: none;
     margin : 10px;
 }
-.filter:hover {
+.ingredientFilterList li:hover,
+.applianceFilterList li:hover,
+.utensilFilterList li:hover {
     text-decoration: underline;
     cursor : pointer;
 }

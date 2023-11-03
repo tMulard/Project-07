@@ -2,10 +2,10 @@ import { displayCardsOnPage } from "../factories/card.js";
 import { createTag } from "../factories/tag.js";
 import { getDataFromLocalStorage, setDataInLocalStorage } from "./data.js";
 
-export const handleIngredients = () => {
-    const button = document.querySelector("#filter1 .filterResult");
-    const chevron = document.querySelector("#filterArrow1");
-    const dropdown = document.querySelector('.ingredientFilterList')
+export const handleAppliances = () => {
+    const button = document.querySelector("#filter2 .filterResult");
+    const chevron = document.querySelector("#filterArrow2");
+    const dropdown = document.querySelector('.applianceFilterList')
     
     // fonction déclechée par le click sur les li    
     const onClickLi = (event) => {
@@ -14,12 +14,12 @@ export const handleIngredients = () => {
         createTag(value)
         chevron.classList.toggle("upsideDown");
         dropdown.classList.toggle("hidden");
-        // filtrer les recettes -> display === false pour value !== ingredients
+        // filtrer les recettes -> display === false pour value !== appliance
          const filteredData = data.map((recipe) => {
             if (recipe.display === true) {
-                if (!recipe.ingredients.some(ing => ing.ingredient.toLowerCase() === value.toLowerCase())) {
-                    recipe.display = false;
-                }
+                    if (!recipe.appliance.toLowerCase() === value.toLowerCase()) {
+                        recipe.display = false;
+                    }
             }
             return recipe;
          })
@@ -35,7 +35,7 @@ export const handleIngredients = () => {
         // si la dropdown est ouverte
         if(!dropdown.classList.contains('hidden')) {
             // on récupère la liste    
-            const filterList = document.querySelectorAll('.ingredientFilter')
+            const filterList = document.querySelectorAll('.applianceFilter')
                 
             //pour chaque li
             filterList.forEach((li) => {
@@ -46,7 +46,7 @@ export const handleIngredients = () => {
                 }
             })
         } else {
-            const filterList = document.querySelectorAll('.ingredientFilter')
+            const filterList = document.querySelectorAll('.applianceFilter')
             filterList.forEach((li) => {
                 li.removeEventListener('click', onClickLi)
             })
