@@ -1,8 +1,8 @@
 import { displayCardsOnPage} from '../factories/card.js';
 import {getData, setDataInLocalStorage} from '../utils/data.js'
-import { handleIngredients } from '../utils/handleIngredients.js';
+import { handleIngredients, handleInputIngredient } from '../utils/handleIngredients.js';
 import { handleAppliances } from '../utils/handleAppliances.js';
-import { handleUtensils } from '../utils/handleUtensils.js';
+import { handleInputUtensil, handleUtensils } from '../utils/handleUtensils.js';
       
 const topButton = document.querySelector(".topButton")
 topButton.addEventListener("click", () => {
@@ -17,9 +17,14 @@ const init = async () => {
   
   displayCardsOnPage();
   
+  // gestionaires des listes
   handleIngredients()
   handleAppliances()
   handleUtensils()
+
+  // gestionnaires des inputs
+  handleInputIngredient()
+  handleInputUtensil()
 };       
 
 init();

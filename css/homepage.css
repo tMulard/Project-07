@@ -162,11 +162,29 @@ header .headerSearch h1 {
     margin: 5px;
 }
 
+.inputContainer {
+    display : inline-flex;
+    align-items: center;
+    position: relative;
+}
+
 .inputSearchList {
     margin : 15px 0;
     width : 80%;
     line-height : 25px;
     content : url('../assets/chevron-up.svg') 10px 10px no-repeat;
+}
+
+.labelSearch {
+    height : auto;
+    width : 10%;
+    position : absolute;
+    right : 20%;
+}
+
+.searchLogo {
+    height : auto;
+    width : 100%;
 }
 /* //////////////////////////////////////////////////////////////////
 

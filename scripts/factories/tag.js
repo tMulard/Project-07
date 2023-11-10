@@ -18,5 +18,6 @@ export const createTag = (value, type) => {
   });
 };
 
+
 ///inputs
 ///effacer tag puis dom
