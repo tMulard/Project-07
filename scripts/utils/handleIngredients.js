@@ -8,6 +8,7 @@ export const handleIngredients = () => {
     const button = document.querySelector("#filter1 .filterResult");
     const chevron = document.querySelector("#filterArrow1");
     const dropdown = document.querySelector('.ingredientFilterList')
+    const filters = document.querySelector("#filter1 .filters");
     
     // fonction déclechée par le click sur les li    
     const onClickLi = (event) => {
@@ -15,7 +16,9 @@ export const handleIngredients = () => {
         const data = getDataFromLocalStorage();
         createTag(value, 'ingredientTag')
         chevron.classList.toggle("upsideDown");
-        dropdown.classList.toggle("hidden");
+        filters.classList.toggle("hidden");
+        filters.classList.toggle("showBorder");
+        
         // filtrer les recettes -> display === false pour value !== ingredients
          const filteredData = data.map((recipe) => {
             if (recipe.display === true) {
@@ -32,7 +35,8 @@ export const handleIngredients = () => {
     button.addEventListener("click", () => {
         
         chevron.classList.toggle("upsideDown");
-        dropdown.classList.toggle("hidden");
+        filters.classList.toggle("hidden");
+        filters.classList.toggle("showBorder");
         
         // si la dropdown est ouverte
         if(!dropdown.classList.contains('hidden')) {
@@ -58,16 +62,18 @@ export const handleIngredients = () => {
 
 export const handleInputIngredient = () =>  {
     const input = document.querySelector('.inputSearchIngredient')
-    const dropdown = document.querySelector('.ingredientFilterList')
     const data = getDataFromLocalStorage();
     const chevron = document.querySelector("#filterArrow1");
+    const filters = document.querySelector("#filter1 .filters");
 
     const onClickLi = (event) => {
         const value = event.target.innerHTML
         const data = getDataFromLocalStorage();
         createTag(value, 'ingredientTag')
         chevron.classList.toggle("upsideDown");
-        dropdown.classList.toggle("hidden");
+        filters.classList.toggle("hidden");
+        filters.classList.toggle("showBorder");
+        
         // filtrer les recettes -> display === false pour value !== ingredients
          const filteredData = data.map((recipe) => {
             if (recipe.display === true) {

@@ -1,8 +1,9 @@
 import { displayCardsOnPage} from '../factories/card.js';
 import {getData, setDataInLocalStorage} from '../utils/data.js'
 import { handleIngredients, handleInputIngredient } from '../utils/handleIngredients.js';
-import { handleAppliances } from '../utils/handleAppliances.js';
-import { handleInputUtensil, handleUtensils } from '../utils/handleUtensils.js';
+import { handleAppliances, handleInputAppliance } from '../utils/handleAppliances.js';
+import { handleInputUstensil, handleUstensils } from '../utils/handleUstensils.js';
+import { handleInput } from '../utils/handleInput.js';
       
 const topButton = document.querySelector(".topButton")
 topButton.addEventListener("click", () => {
@@ -20,11 +21,13 @@ const init = async () => {
   // gestionaires des listes
   handleIngredients()
   handleAppliances()
-  handleUtensils()
+  handleUstensils()
 
   // gestionnaires des inputs
   handleInputIngredient()
-  handleInputUtensil()
+  handleInputAppliance()
+  handleInputUstensil()
+  handleInput()
 };       
 
 init();
@@ -35,13 +38,3 @@ init();
 
 // 3 - sauvegarder dans le localStorage ==> DONE
 // 4 - displayCardsOnPage(); ==> DONE
-
-// const searchBar = document.querySelector(".searchBar");
-// searchBar.addEventListener("input", () => {
-  //   const data = getDataFromLocalStorage();
-  //   data.forEach((recipe) => {
-    //     if (recipe.display === true) {
-      //     }
-      //   });
-      // });
-  

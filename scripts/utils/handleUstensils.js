@@ -4,10 +4,12 @@ import { createTag } from "../factories/tag.js";
 import { getDataFromLocalStorage, setDataInLocalStorage } from "./data.js";
 import { removeDuplicates } from "./tools.js";
 
-export const handleUtensils = () => {
+export const handleUstensils = () => {
     const button = document.querySelector("#filter3 .filterResult");
     const chevron = document.querySelector("#filterArrow3");
     const dropdown = document.querySelector('.utensilFilterList')
+    const filters = document.querySelector("#filter3 .filters");
+    
 
     // fonction déclechée par le click sur les li    
     const onClickLi = (event) => {
@@ -15,7 +17,9 @@ export const handleUtensils = () => {
         const data = getDataFromLocalStorage();
         createTag(value, "ustensilTag")
         chevron.classList.toggle("upsideDown");
-        dropdown.classList.toggle("hidden");
+        filters.classList.toggle("hidden");
+        filters.classList.toggle("showBorder");
+        
         // filtrer les recettes -> display === false pour value !== utensil
          const filteredData = data.map((recipe) => {
             if (recipe.display === true) {
@@ -34,12 +38,13 @@ export const handleUtensils = () => {
     button.addEventListener("click", () => {
         
         chevron.classList.toggle("upsideDown");
-        dropdown.classList.toggle("hidden");
+        filters.classList.toggle("hidden");
+        filters.classList.toggle("showBorder");
         
         // si la dropdown est ouverte
         if(!dropdown.classList.contains('hidden')) {
             // on récupère la liste    
-            const filterList = document.querySelectorAll('.utensilFilter')
+            const filterList = document.querySelectorAll('.ustensilFilter')
             
             //pour chaque li
             filterList.forEach((li) => {
@@ -51,7 +56,7 @@ export const handleUtensils = () => {
                
             })
         } else {
-            const filterList = document.querySelectorAll('.utensilFilter')
+            const filterList = document.querySelectorAll('.ustensilFilter')
             filterList.forEach((li) => {
                 li.removeEventListener('click', onClickLi)
             })
@@ -60,19 +65,21 @@ export const handleUtensils = () => {
 
 }
 
-export const handleInputUtensil = () =>  {
+export const handleInputUstensil = () =>  {
     const input = document.querySelector('.inputSearchUstensil')
-    const dropdown = document.querySelector('.utensilFilterList')
     const data = getDataFromLocalStorage();
-    const chevron = document.querySelector("#filterArrow1");
+    const chevron = document.querySelector("#filterArrow3");
+    const filters = document.querySelector("#filter3 .filters");
 
     const onClickLi = (event) => {
         const value = event.target.innerHTML
         const data = getDataFromLocalStorage();
-        createTag(value, 'utensilTag')
+        createTag(value, 'ustensilTag')
         chevron.classList.toggle("upsideDown");
-        dropdown.classList.toggle("hidden");
-        // filtrer les recettes -> display === false pour value !== utensils
+        filters.classList.toggle("hidden");
+        filters.classList.toggle("showBorder");
+ 
+        // filtrer les recettes -> display === false pour value !== ustensils
          const filteredData = data.map((recipe) => {
             if (recipe.display === true) {
                 const ustensils = recipe.ustensils
@@ -97,7 +104,7 @@ export const handleInputUtensil = () =>  {
         
         // on cherche les ustensils en fonction de la value de l'input
         // créer un tableau de tous les ustensils des recettes affichées
-        const utensilsToDisplay = data.map((recipe) => {
+        const ustensilsToDisplay = data.map((recipe) => {
             // recherche uniquement sur les recettes qui sont déjà affichées
             if (recipe.display === true) {
                 return recipe.ustensils
@@ -105,15 +112,15 @@ export const handleInputUtensil = () =>  {
             // return [];
          })
 
-         const allUten = utensilsToDisplay.flat()
+         const allUsten = ustensilsToDisplay.flat()
          const regex = new RegExp(value)
-         const matches = allUten.filter(Uten => regex.test(Uten));
+         const matches = allUsten.filter(Usten => regex.test(Usten));
 
         ustensilListFactory(removeDuplicates(matches))
 
 
-        // on récupère la liste des utensils
-        const filterList = document.querySelectorAll('.utensilFilter')
+        // on récupère la liste des ustensils
+        const filterList = document.querySelectorAll('.ustensilFilter')
     
         //pour chaque li
         filterList.forEach((li) => {

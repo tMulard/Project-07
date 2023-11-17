@@ -93,6 +93,8 @@ header .headerSearch h1 {
     justify-content: space-evenly;
     align-items: center;
     padding : 0 10px;
+    position : inherit;
+    z-index: 30;
 }
 .filterResult img {
     width : 10%;
@@ -104,34 +106,39 @@ header .headerSearch h1 {
     z-index : 30;
     position: inherit;
     top: -40%;
+    display : flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    border-radius: 20px;
+    background-color: white;
 }
 .ingredientFilterList,
 .applianceFilterList,
-.utensilFilterList {
-    background-color: white;
-    border : solid 1px gray;
-    border-radius: 20px;
+.ustensilFilterList {
     display : flex;
     flex-direction: column;
     justify-content: space-between;
     max-height: 500px;
     overflow-y: auto;
     scrollbar-width: none;
+    margin-top: -10px;
+    max-width : 252px;
 }
 .ingredientFilterList::-webkit-scrollbar,
 .applianceFilterList::-webkit-scrollbar,
-.utensilFilterList::-webkit-scrollbar {
+.ustensilFilterList::-webkit-scrollbar {
     display: none;
 }
 .ingredientFilterList li,
 .applianceFilterList li,
-.utensilFilterList li {
+.ustensilFilterList li {
     list-style: none;
     margin : 10px;
 }
 .ingredientFilterList li:hover,
 .applianceFilterList li:hover,
-.utensilFilterList li:hover {
+.ustensilFilterList li:hover {
     text-decoration: underline;
     cursor : pointer;
 }
@@ -165,7 +172,14 @@ header .headerSearch h1 {
 .inputContainer {
     display : inline-flex;
     align-items: center;
-    position: relative;
+    justify-content: center;
+    width : 100%;
+    margin-bottom: 0px;
+}
+
+.inputContainer:hover {
+    text-decoration: underline;
+    cursor : pointer;
 }
 
 .inputSearchList {
@@ -175,16 +189,12 @@ header .headerSearch h1 {
     content : url('../assets/chevron-up.svg') 10px 10px no-repeat;
 }
 
-.labelSearch {
+.searchLogo {
     height : auto;
     width : 10%;
     position : absolute;
     right : 20%;
-}
-
-.searchLogo {
-    height : auto;
-    width : 100%;
+    color : grey;
 }
 /* //////////////////////////////////////////////////////////////////
 
@@ -315,4 +325,7 @@ header .headerSearch h1 {
 
 .hidden {
     display : none;
+}
+.showBorder {
+    border : solid 1px gray;
 }

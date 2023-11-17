@@ -53,11 +53,10 @@ export const ingredientListFactory = (ingredients) => {
     const searchLogo = document.createElement("img")
     searchLogo.classList.add(["searchLogo"],["ingredientSearchLogo"]);
     searchLogo.setAttribute("src", "../assets/search-svgrepo-com.svg");
-    
+
     inputContainer.appendChild(input)
     inputContainer.appendChild(searchLogo)
-    list.appendChild(inputContainer)
-
+    
     filteredIngredients.forEach(ingredient => {
         const li = document.createElement('li');
         li.classList.add('filter')
@@ -65,12 +64,12 @@ export const ingredientListFactory = (ingredients) => {
         li.innerText = ingredient;
         list.appendChild(li);
     });
+    
+    const filters = document.querySelector("#filter1 .filters")
+    filters.appendChild(inputContainer)
+    filters.appendChild(list)
 }
 
-// <list>
-// <input>
-// ..ingredients
-// </list>
 
 export const ustensilListFactory = (ustensils) => {
     // 1 - récupérer les ustensils sélectionnées
@@ -79,7 +78,7 @@ export const ustensilListFactory = (ustensils) => {
     // 2 - les retirer de "ustensils"
     const filteredUstensils = ustensils.filter(ust => !ustensilToRemove.includes(ust)).flat()
 
-    const list = document.querySelector('.utensilFilterList');
+    const list = document.querySelector('.ustensilFilterList');
     list.innerHTML = '';
 
     const inputContainer = document.createElement('div')
@@ -90,26 +89,23 @@ export const ustensilListFactory = (ustensils) => {
     input.setAttribute("type", "text")
 
     const searchLogo = document.createElement("img")
-    searchLogo.classList.add(["searchLogo"],["utensilSearchLogo"]);
-    searchLogo.setAttribute("id", "utensilSearch")
+    searchLogo.classList.add(["searchLogo"],["ustensilSearchLogo"]);
+    searchLogo.setAttribute("id", "ustensilSearch")
     searchLogo.setAttribute("src", "../assets/search-svgrepo-com.svg");
-    
-    const labelSearch = document.createElement('label')
-    labelSearch.classList.add("labelSearch")
-    labelSearch.setAttribute("for", "utensilSearch")
-
 
     inputContainer.appendChild(input)
-    labelSearch.appendChild(searchLogo)
-    inputContainer.appendChild(labelSearch)
-    list.appendChild(inputContainer)
+    inputContainer.appendChild(searchLogo)
     
     filteredUstensils.forEach(ustensil => {
         const li = document.createElement('li');
-        li.classList.add('utensilFilter')
+        li.classList.add('ustensilFilter')
         li.innerText = ustensil;
         list.appendChild(li);
     });
+
+    const filters = document.querySelector("#filter3 .filters")
+    filters.appendChild(inputContainer)
+    filters.appendChild(list)
 }
 
 export const applianceListFactory = (appliances) => {
@@ -135,7 +131,6 @@ export const applianceListFactory = (appliances) => {
     
     inputContainer.appendChild(input)
     inputContainer.appendChild(searchLogo)
-    list.appendChild(inputContainer)
     
     filteredAppliances.forEach(appliance => {
         const li = document.createElement('li');
@@ -143,4 +138,8 @@ export const applianceListFactory = (appliances) => {
         li.innerText = appliance;
         list.appendChild(li);
     });
+
+    const filters = document.querySelector("#filter2 .filters")
+    filters.appendChild(inputContainer)
+    filters.appendChild(list)
 }
