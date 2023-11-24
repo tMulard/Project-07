@@ -47,6 +47,7 @@ export const ingredientListFactory = (ingredients) => {
     inputContainer.classList.add("inputContainer")
 
     const input = document.createElement('input')
+    input.innerHTML = '';
     input.classList.add(['inputSearchList'], ['inputSearchIngredient'])
     input.setAttribute("type", "text");
     
@@ -85,6 +86,7 @@ export const ustensilListFactory = (ustensils) => {
     inputContainer.classList.add("inputContainer")
 
     const input = document.createElement('input')
+    input.innerHTML = '';
     input.classList.add(['inputSearchList'], ['inputSearchUstensil'])
     input.setAttribute("type", "text")
 
@@ -122,6 +124,7 @@ export const applianceListFactory = (appliances) => {
     inputContainer.classList.add("inputContainer")
 
     const input = document.createElement('input')
+    input.innerHTML = '';
     input.classList.add(['inputSearchList'], ['inputSearchAppliance'])
     input.setAttribute("type", "text")
     

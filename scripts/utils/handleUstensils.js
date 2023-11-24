@@ -7,7 +7,7 @@ import { removeDuplicates } from "./tools.js";
 export const handleUstensils = () => {
     const button = document.querySelector("#filter3 .filterResult");
     const chevron = document.querySelector("#filterArrow3");
-    const dropdown = document.querySelector('.utensilFilterList')
+    const dropdown = document.querySelector('.ustensilFilterList')
     const filters = document.querySelector("#filter3 .filters");
     
 

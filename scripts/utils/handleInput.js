@@ -17,21 +17,65 @@ export const handleInput = () =>  {
         // faire la remise à zéro en fonction des tags déjà sélectionés
         else if (value.length === 2 && needRAZ) {
             needRAZ = false
-            const ingredientsSelected = document.querySelectorAll('.ingredientTag')
-            const appliancesSelected = document.querySelectorAll('.applianceTag')
-            const ustensilsSelected = document.querySelectorAll('.ustensilTag')
+            const ingredientsSelected = Array.from(document.querySelectorAll('.ingredientTag')).map((tag) => tag.innerText.toLowerCase())
+            const appliancesSelected = Array.from(document.querySelectorAll('.applianceTag')).map((tag) => tag.innerText.toLowerCase())
+            const ustensilsSelected = Array.from(document.querySelectorAll('.ustensilTag')).map((tag) => tag.innerText.toLowerCase())
             
             // 1 - récupérer toutes les data et tout mettre à display: true
             const clearRecipes = data.map((e) => ({...e, display: true}))
             
             // 2 - filtrer par ing
             const recipesFilteredByIngredient = clearRecipes.map((recipe) => {
-                // chercher si la recettes contient TOUT ingredientsSelected indexof (boucle)
+                // chercher si la recette contient TOUT ingredientsSelected indexof (boucle)
+                const recipeIngredients = recipe.ingredients.map((ing) => {
+                    return ing.ingredient.toLowerCase();
+                })
+
+                if (ingredientsSelected.length === 0) {
+                    recipe.display = true;
+                } else {
+                    const hasAllIngredients = ingredientsSelected.some(i => recipeIngredients.includes(i))
+                    if (hasAllIngredients) {
+                        recipe.display = true
+                    } else {
+                        recipe.display = false
+                    }
+                }
+                return recipe
             })
+           
             // 3 - filtrer par ustensil
-            // 4 - filtrer par appliance
+            const recipesFilteredByUstensilAndIngredient = recipesFilteredByIngredient.map((recipe) => {
+                // chercher si la recette contient TOUT ustensilsSelected indexof (boucle)
+                const recipeUstensils = recipe.ustensils.map((ust) => ust.toLowerCase())
+                if (ustensilsSelected.length > 0) {
+                    const hasAllUstensils = ustensilsSelected.some(u => recipeUstensils.includes(u))
+                    if (hasAllUstensils) {
+                        recipe.display = true
+                    } else {
+                        recipe.display = false
+                    }
+                }
+                return recipe
+            })
+
+            // // 4 - filtrer par appliance
             
-            setDataInLocalStorage(recipesFilteredByIngredient)
+            const finalRecipesFilteredByAll = recipesFilteredByUstensilAndIngredient.map((recipe) => {
+                // chercher si la recette contient appliancesSelected indexof (boucle)
+                const recipeApp = recipe.appliance.toLowerCase();
+                                
+                if (appliancesSelected.length > 0) {
+                    if (appliancesSelected.includes(recipeApp)) {
+                        recipe.display = true
+                    } else {
+                        recipe.display = false
+                    }
+                }
+                return recipe
+            })
+
+            setDataInLocalStorage(finalRecipesFilteredByAll)
             displayCardsOnPage();
         }
         // au moins 3 characters
