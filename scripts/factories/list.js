@@ -40,12 +40,19 @@ export const ingredientListFactory = (ingredients) => {
     // 2 - les retirer de "ingredients"
     const filteredIngredients = ingredients.filter(ingr => !ingredientToRemove.includes(ingr)).flat()
 
+    // 3 Vérifier si il y a déjà un input et le supprimer dans ce cas
+    if (document.querySelector("#filter1 .inputContainer")) {
+        const filters = document.querySelector("#filter1 .filters")
+        const containerToBeRemoved = document.querySelector("#filter1 .inputContainer")
+        filters.removeChild(containerToBeRemoved)
+    }
+    
     const list = document.querySelector('.ingredientFilterList');
     list.innerHTML = '';
-    
+
     const inputContainer = document.createElement('div')
     inputContainer.classList.add("inputContainer")
-
+    
     const input = document.createElement('input')
     input.innerHTML = '';
     input.classList.add(['inputSearchList'], ['inputSearchIngredient'])
@@ -73,41 +80,52 @@ export const ingredientListFactory = (ingredients) => {
 
 
 export const ustensilListFactory = (ustensils) => {
-    // 1 - récupérer les ustensils sélectionnées
-    const selectedUstensils = Array.from(document.querySelectorAll(".ustensilTag"))
-    const ustensilToRemove = selectedUstensils.map((tag) => tag.innerText)
-    // 2 - les retirer de "ustensils"
-    const filteredUstensils = ustensils.filter(ust => !ustensilToRemove.includes(ust)).flat()
+  // 1 - récupérer les ustensils sélectionnées
+  const selectedUstensils = Array.from(
+    document.querySelectorAll(".ustensilTag")
+  );
+  const ustensilToRemove = selectedUstensils.map((tag) => tag.innerText);
+  // 2 - les retirer de "ustensils"
+  const filteredUstensils = ustensils
+    .filter((ust) => !ustensilToRemove.includes(ust))
+    .flat();
 
-    const list = document.querySelector('.ustensilFilterList');
-    list.innerHTML = '';
+  // 3 Vérifier si il y a déjà un input et le supprimer dans ce cas
+  if (document.querySelector("#filter3 .inputContainer")) {
+    const filters = document.querySelector("#filter3 .filters");
+    const containerToBeRemoved = document.querySelector("#filter3 .inputContainer");
+    filters.removeChild(containerToBeRemoved);
+  }
 
-    const inputContainer = document.createElement('div')
-    inputContainer.classList.add("inputContainer")
+  const list = document.querySelector(".ustensilFilterList");
+  list.innerHTML = "";
 
-    const input = document.createElement('input')
-    input.innerHTML = '';
-    input.classList.add(['inputSearchList'], ['inputSearchUstensil'])
-    input.setAttribute("type", "text")
+  const inputContainer = document.createElement("div");
+  inputContainer.classList.add("inputContainer");
 
-    const searchLogo = document.createElement("img")
-    searchLogo.classList.add(["searchLogo"],["ustensilSearchLogo"]);
-    searchLogo.setAttribute("id", "ustensilSearch")
-    searchLogo.setAttribute("src", "../assets/search-svgrepo-com.svg");
+  const input = document.createElement("input");
+  input.innerHTML = "";
+  input.classList.add(["inputSearchList"], ["inputSearchUstensil"]);
+  input.setAttribute("type", "text");
 
-    inputContainer.appendChild(input)
-    inputContainer.appendChild(searchLogo)
-    
-    filteredUstensils.forEach(ustensil => {
-        const li = document.createElement('li');
-        li.classList.add('ustensilFilter')
-        li.innerText = ustensil;
-        list.appendChild(li);
-    });
+  const searchLogo = document.createElement("img");
+  searchLogo.classList.add(["searchLogo"], ["ustensilSearchLogo"]);
+  searchLogo.setAttribute("id", "ustensilSearch");
+  searchLogo.setAttribute("src", "../assets/search-svgrepo-com.svg");
 
-    const filters = document.querySelector("#filter3 .filters")
-    filters.appendChild(inputContainer)
-    filters.appendChild(list)
+  inputContainer.appendChild(input);
+  inputContainer.appendChild(searchLogo);
+
+  filteredUstensils.forEach((ustensil) => {
+    const li = document.createElement("li");
+    li.classList.add("ustensilFilter");
+    li.innerText = ustensil;
+    list.appendChild(li);
+  });
+
+  const filters = document.querySelector("#filter3 .filters");
+  filters.appendChild(inputContainer);
+  filters.appendChild(list);
 }
 
 export const applianceListFactory = (appliances) => {
@@ -117,6 +135,13 @@ export const applianceListFactory = (appliances) => {
     // 2 - les retirer de "appliances"
     const filteredAppliances = appliances.filter(appl => !applianceToRemove.includes(appl)).flat()
     
+     // 3 Vérifier si il y a déjà un input et le supprimer dans ce cas
+     if (document.querySelector("#filter2 .inputContainer")) {
+        const filters = document.querySelector("#filter2 .filters")
+        const containerToBeRemoved = document.querySelector("#filter2 .inputContainer")
+        filters.removeChild(containerToBeRemoved)
+    }
+
     const list = document.querySelector('.applianceFilterList');
     list.innerHTML = '';
 
