@@ -104,10 +104,11 @@ export const handleInputUstensil = () =>  {
         
         // on cherche les ustensils en fonction de la value de l'input
         // créer un tableau de tous les ustensils des recettes affichées
-        const ustensilsToDisplay = data.map((recipe) => {
+        let ustensilsToDisplay = [];
+        data.forEach((recipe) => {
             // recherche uniquement sur les recettes qui sont déjà affichées
             if (recipe.display === true) {
-                return recipe.ustensils
+                ustensilsToDisplay.push(recipe.ustensils);
             }
             // return [];
          })

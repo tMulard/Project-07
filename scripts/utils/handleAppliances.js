@@ -107,10 +107,11 @@ export const handleInputAppliance = () =>  {
         
         // on cherche les apprliances en fonction de la value de l'input
         // créer un tableau de tous les appliances des recettes affichées
-        const applianceToDisplay = data.map((recipe) => {
+        let applianceToDisplay = [];
+        data.forEach((recipe) => {
             // recherche uniquement sur les recettes qui sont déjà affichées
             if (recipe.display === true) {
-                return recipe.appliance
+                applianceToDisplay.push(recipe.appliance)
             }
             return [];
          })

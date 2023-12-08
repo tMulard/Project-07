@@ -97,10 +97,11 @@ export const handleInputIngredient = () =>  {
         
         // on cherche les ingrédients en fonction de la value de l'input
         // créer un tableau de tous les ingrédients des recettes affichées
-        const ingredientsToDisplay = data.map((recipe) => {
+        let ingredientsToDisplay = [];
+        data.forEach((recipe) => {
             // recherche uniquement sur les recettes qui sont déjà affichées
             if (recipe.display === true) {
-                return recipe.ingredients.map((el) => el.ingredient)
+                ingredientsToDisplay.push(recipe.ingredients.map((el) => el.ingredient))
             }
             return [];
          })
