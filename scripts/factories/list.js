@@ -60,7 +60,7 @@ export const ingredientListFactory = (ingredients) => {
     
     const searchLogo = document.createElement("img")
     searchLogo.classList.add(["searchLogo"],["ingredientSearchLogo"]);
-    searchLogo.setAttribute("src", "../assets/search-svgrepo-com2.svg");
+    searchLogo.setAttribute("src", "assets/search-svgrepo-com2.svg");
 
     inputContainer.appendChild(input)
     inputContainer.appendChild(searchLogo)
@@ -111,7 +111,7 @@ export const ustensilListFactory = (ustensils) => {
   const searchLogo = document.createElement("img");
   searchLogo.classList.add(["searchLogo"], ["ustensilSearchLogo"]);
   searchLogo.setAttribute("id", "ustensilSearch");
-  searchLogo.setAttribute("src", "../assets/search-svgrepo-com2.svg");
+  searchLogo.setAttribute("src", "assets/search-svgrepo-com2.svg");
 
   inputContainer.appendChild(input);
   inputContainer.appendChild(searchLogo);
@@ -155,7 +155,7 @@ export const applianceListFactory = (appliances) => {
     
     const searchLogo = document.createElement("img")
     searchLogo.classList.add(["searchLogo"],["applianceSearchLogo"]);
-    searchLogo.setAttribute("src", "../assets/search-svgrepo-com2.svg");
+    searchLogo.setAttribute("src", "assets/search-svgrepo-com2.svg");
     
     inputContainer.appendChild(input)
     inputContainer.appendChild(searchLogo)
