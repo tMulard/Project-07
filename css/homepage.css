@@ -36,25 +36,52 @@ header .headerSearch {
 
 header .headerSearch h1 {
     color : #FFD15B;
-    font-weight: 400px;
+    font-weight : bold;
     font-size : 44px;
     line-height : 66.24px;
     text-align : center;
     width: 80%;
+    margin : 0 auto;
+}
+
+.searchBarContainer {
+    display: block;
+    z-index : 1;
+    position: relative;
 }
 
 .searchBar {
     width: 954px;
     height: 72px;
     border-radius: 10px;
+    position: relative;
+    z-index : 2;
 }
-/* //////////////////////////////////////////////////////////////////
 
+.searchBarIcon {
+    position: absolute;
+    z-index : 20;
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius : 20px;
+    right: 58px;
+    top: 11px;
+    padding: 10px;
+}
 
+.searchBarIcon img {
+    width: 100%;
+    height: 100%;
+}
 
-
-
-///////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////
+//    IIIIIII     IIIIIII     I       IIIIIIIIIII   IIIIII    IIIII
+//    I              I        I            I        I         I    I
+//    IIII           I        I            I        III       IIIII
+//    I              I        I            I        I         I    I
+//    I           IIIIIII     IIIIII       I        IIIIII    I     I
+//////////////////////////////////////////////////////////////////////////// */
 
 .Recipes {
     width: 95%;
@@ -73,7 +100,7 @@ header .headerSearch h1 {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom : 30px;
-    align-items: top;
+    align-items : baseline;
     width: 850px;
 }
 
@@ -177,31 +204,26 @@ header .headerSearch h1 {
     margin-bottom: 0px;
 }
 
-.inputContainer:hover {
-    text-decoration: underline;
-    cursor : pointer;
-}
-
 .inputSearchList {
     margin : 15px 0;
     width : 80%;
     line-height : 25px;
-    content : url('../assets/chevron-up.svg') 10px 10px no-repeat;
+    content : url('../assets/chevron-up.svg');
 }
 
 .searchLogo {
     height : auto;
     width : 10%;
     position : absolute;
-    right : 20%;
-    color : grey;
+    right : 10%;
 }
+
 /* //////////////////////////////////////////////////////////////////
-
-
-
-
-
+//      IIIIII    IIIIII    IIIIII  IIIIIIIII  IIIIII   IIIIII
+//      I     I   I        I            I      I     I  I
+//      IIIIII    III      I            I      IIIIII   III
+//      I     I   I        I            I      I        I
+//      I      I  IIIIII    IIIIII  IIIIIIII   I        IIIIII
 ///////////////////////////////////////////////////////////////// */
 
 .cardList {

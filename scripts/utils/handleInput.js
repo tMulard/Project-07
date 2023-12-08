@@ -99,7 +99,7 @@ export const handleInput = () =>  {
     })
 }
 
-const stringifyRecipe = (recipe) => {
+export const stringifyRecipe = (recipe) => {
     const name = recipe.name.toLowerCase()
     const description = recipe.description.toLowerCase()
     const ingredients = recipe.ingredients.map((ing) => ing.ingredient).join(' ').toLowerCase()
