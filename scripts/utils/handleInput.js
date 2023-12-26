@@ -8,8 +8,8 @@ export const handleInput = () =>  {
     
     input.addEventListener('input', () => {
         const data = getDataFromLocalStorage();
-        const value = input.value;
-        
+        const regex = '/[^a-zA-Z]+/gm';
+        const value = input.value.replace(regex, " ");
         // on fait rien
         if (value.length === 1) {
             needRAZ = false;
