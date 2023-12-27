@@ -1,3 +1,15 @@
+@font-face {
+    font-family: "Anton";
+    src: url("../fonts/Anton-Regular.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Regular.ttf");
+    font-display: swap;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -12,6 +24,7 @@ header {
     background-size: cover;
     position : relative;
     z-index: 0;
+    font-family: Anton;
 }
 
 header .title {
@@ -26,12 +39,18 @@ header .title {
     align-items: center;
 }
 
+header .title span {
+    font-weight : bold;
+    font-size : 26px;
+    margin : 0 5px;
+}
+
 header .headerSearch {
     position : absolute;
-    top: 100px;
+    top: 245px;
     left: 25%;
     z-index: 1;
-    max-width : 1000px;
+    width : 954px;
 }
 
 header .headerSearch h1 {
@@ -41,7 +60,7 @@ header .headerSearch h1 {
     line-height : 66.24px;
     text-align : center;
     width: 80%;
-    margin : 0 auto;
+    margin : 10px auto;
 }
 
 .searchBarContainer {
@@ -64,8 +83,8 @@ header .headerSearch h1 {
     width: 30px;
     height: 30px;
     background-color: black;
-    border-radius : 20px;
-    right: 58px;
+    border-radius : 15px;
+    right: 8px;
     top: 11px;
     padding: 10px;
 }
@@ -84,7 +103,7 @@ header .headerSearch h1 {
 //////////////////////////////////////////////////////////////////////////// */
 
 .Recipes {
-    width: 95%;
+    width: 1236px;
     margin : 0 auto;
 }
 
@@ -93,25 +112,33 @@ header .headerSearch h1 {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: center;
+    margin : 10px 0;
 }
 
 .filterSection {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-bottom : 30px;
     align-items : baseline;
     width: 850px;
 }
 
+
 .filterContainer {
-    width : 250px;
+    width : 195px;
     background-color: white;
     border : solid 1px gray;
     border-radius: 20px;
-    height : 50px;
+    height : 56px;
     position : relative;
     z-index : 30;
+    font-family : Manrope;
+    margin : 0 auto;
+}
+
+.filterContainer:first-child {
+    margin-left: 0;
 }
 
 .filterResult {
@@ -132,11 +159,10 @@ header .headerSearch h1 {
 .filters {
     z-index : 30;
     position: inherit;
-    top: -40%;
+    top: -25%;
     display : flex;
     flex-direction: column;
-    justify-content: space-around;
-    
+    /* justify-content: space-around; */
     border-radius: 20px;
     background-color: white;
 }
@@ -145,7 +171,6 @@ header .headerSearch h1 {
 .ustensilFilterList {
     display : flex;
     flex-direction: column;
-    justify-content: space-between;
     max-height: 500px;
     overflow-y: auto;
     scrollbar-width: none;
@@ -161,12 +186,17 @@ header .headerSearch h1 {
 .applianceFilterList li,
 .ustensilFilterList li {
     list-style: none;
-    margin : 10px;
+    font-family: Manrope;
+    font-weight: 400;
+    padding : 5px;
+    margin : 0 0 0 -24px;
+    max-width : 100%;
 }
 .ingredientFilterList li:hover,
 .applianceFilterList li:hover,
 .ustensilFilterList li:hover {
-    text-decoration: underline;
+    background-color: #FFD15B;
+    font-weight: 700;
     cursor : pointer;
 }
 
@@ -190,6 +220,7 @@ header .headerSearch h1 {
 }
 .filterElement p {
     margin: 5px;
+    font-family: Manrope;
 }
 .filterClose {
     width : 20px;
@@ -218,6 +249,13 @@ header .headerSearch h1 {
     right : 10%;
 }
 
+.recipeList {
+    font-family: Anton;
+    font-weight : 400px;
+    font-size : 21px;
+    line-height: 32px;
+}
+
 /* //////////////////////////////////////////////////////////////////
 //      IIIIII    IIIIII    IIIIII  IIIIIIIII  IIIIII   IIIIII
 //      I     I   I        I            I      I     I  I
@@ -229,27 +267,23 @@ header .headerSearch h1 {
 .cardList {
     display : flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap : wrap;
     align-items : center;
+    width : 100%;
 }
 
-
 .cardList .recipe {
-    border-radius : 40px;
+    border-radius : 21px;
     width: 380px;
     height: 731px;
     overflow : hidden;
     background-color: white;
-    margin : 10px 40px;
+    margin : 32px 0;
 }
 
 .recipe:hover {
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.recipe p {
-    font-size: 12px;
 }
 
 .recipePhoto {
@@ -264,31 +298,46 @@ header .headerSearch h1 {
     position : absolute;
     z-index : 5;
     background-color : #FFD15B;
-    border-radius: 20px;
-    top : 5px;
-    right : 5px;
+    border-radius: 14px;
+    top : 21px;
+    left : 295px;
     padding: 5px;
+    line-height: 16.4px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: Manrope;
 }
 
 .recipe .cardDown {
     height : 80%;
-    padding : 5px;
+    padding : 5px 15px;
 }
 
 .cardDown h2 {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight : 400;
+    line-height: 27.1px;
+    font-family : Anton;
 }
 
 .cardDown h3 {
-    font-size: 15px;
+    font-weight: 700;
+    font-family: Manrope;
+    font-size: 12px;
+    line-height: 16.39px;
     color : grey;
 }
 
 .cardRecipe p {
-    width : 95%;
+    width : 100%;
     height: 50px;
     overflow-y: auto;
+    scrollbar-width: none;
     margin : 0 auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Manrope;
+    line-height: 19.12px;
 }
 
 .ingredientGrid {
@@ -296,19 +345,21 @@ header .headerSearch h1 {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    width : 90%;
     align-items : center;
-    margin : 0 auto;
 }
 
 .ingredientContainer {
-    width : 30%;
-    margin: 0 20px;
-    line-height: 16px;
+    width : 35%;
+    line-height: 14px;
 }
 
+.ingredientContainer p {
+    font-weight: 500;
+}
 .ingredientQuantity {
-    font-size: 11px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Manrope;
     color : grey;
 }
 
@@ -329,14 +380,15 @@ header .headerSearch h1 {
 .topButton {
     position : fixed;
     right: 45%;
-    bottom : 0;
+    bottom : 10px;
     left : 45%;
     z-index : 20;
     padding : 5px;
     background-color :#FFD15B;
     border-radius: 20px;
-    color : white;
-    font-weight: bold;
+    color : black;
+    font-weight: 700;
+    font-family: Manrope;
     text-align: center;
 }
 

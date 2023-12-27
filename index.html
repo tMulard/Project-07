@@ -1,66 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Les Petits Plats</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="./css/homepage.css">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="./css/homepage.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <div class="title">
         <span>LES PETITS PLATS</span>
-                <img src="assets/logoCircle.svg" alt="Logo">
-              </div>
-              <div class="headerSearch">
-                <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DELICIEUSES</h1>
-                <div class="searchBarContainer">
-                  <input class="searchBar" id="mainSearchBar" type="search" placeholder="Rechercher une recette, un ingrédient...">
-                  <div class="searchBarIcon">
-                    <img src="assets/search-svgrepo-com.svg" alt="searchBarIcon" >
-                  </div>
-                </div>
-              </div>
-            </header>
-            <section class="Recipes">
-              <div class="filterArea">
-                <div class="filterSection">
-                  <div class="filterContainer" aria-label="Ingrédients" id="filter1">
-                    <div class="filterResult">
-                      <p>Ingrédients</p>
-                      <img src="assets/chevron-up.svg" id="filterArrow1" alt="Filter arrow 1">
-                    </div>
-                    <div class="filters hidden">
-                      <ul class="ingredientFilterList"></ul>
-                    </div>
-                  </div>
-                  <div class="filterContainer" aria-label="Appareils" id="filter2">
-                    <div class="filterResult">
-                      <p>Appareils</p>
-                      <img src="assets/chevron-up.svg" id="filterArrow2" alt="Filter arrow 2">
-                    </div>
-                    <div class="filters hidden">
-                      <ul class="applianceFilterList"></ul>
-                    </div>
-                  </div>
-                  <div class="filterContainer" aria-label="Ustensiles" id="filter3">
-                    <div class="filterResult">
-                      <p>Ustensiles</p>
-                      <img src="assets/chevron-up.svg" id="filterArrow3" alt="Filter arrow 3">
-                    </div>
-                    <div class="filters hidden">
-                      <ul class="ustensilFilterList"></ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="recipeList"></div>
-              </div>
-              <div class="filterSelectedArea">
-              </div>
-            <div class="cardList"></div>
-          </section>
-          <span class="topButton">Revenir en haut</span>
-          <script type="module" src="scripts/pages/index.js"></script>
-        </body>
-        </html>
+        <img src="assets/logoCircle.svg" alt="Logo" />
+      </div>
+      <div class="headerSearch">
+        <h1>
+          CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET
+          DELICIEUSES
+        </h1>
+        <div class="searchBarContainer">
+          <input
+            class="searchBar"
+            id="mainSearchBar"
+            type="search"
+            placeholder="     Rechercher une recette, un ingrédient..."
+          />
+          <div class="searchBarIcon">
+            <img src="assets/search-svgrepo-com.svg" alt="searchBarIcon" />
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="Recipes">
+      <div class="filterArea">
+        <div class="filterSection">
+          <div class="filterContainer" aria-label="Ingrédients" id="filter1">
+            <div class="filterResult">
+              <p>Ingrédients</p>
+              <img
+                src="assets/chevron-up.svg"
+                id="filterArrow1"
+                alt="Filter arrow 1"
+              />
+            </div>
+            <div class="filters hidden">
+              <ul class="ingredientFilterList"></ul>
+            </div>
+          </div>
+          <div class="filterContainer" aria-label="Appareils" id="filter2">
+            <div class="filterResult">
+              <p>Appareils</p>
+              <img
+                src="assets/chevron-up.svg"
+                id="filterArrow2"
+                alt="Filter arrow 2"
+              />
+            </div>
+            <div class="filters hidden">
+              <ul class="applianceFilterList"></ul>
+            </div>
+          </div>
+          <div class="filterContainer" aria-label="Ustensiles" id="filter3">
+            <div class="filterResult">
+              <p>Ustensiles</p>
+              <img
+                src="assets/chevron-up.svg"
+                id="filterArrow3"
+                alt="Filter arrow 3"
+              />
+            </div>
+            <div class="filters hidden">
+              <ul class="ustensilFilterList"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="recipeList"></div>
+      </div>
+      <div class="filterSelectedArea"></div>
+      <div class="cardList"></div>
+    </section>
+    <span class="topButton">Revenir en haut</span>
+    <script type="module" src="scripts/pages/index.js"></script>
+  </body>
+</html>
